@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INU5101 — Written Midterm Mock Test</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #4f46e5;
+  --primary-light: #818cf8;
+  --secondary: #7c3aed;
+  --accent: #06b6d4;
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%);
+  min-height: 100vh;
+  padding: 30px 15px;
+  color: var(--text);
+}
+.container {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(79,70,229,0.25);
+  max-width: 920px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.header {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  padding: 40px;
+  text-align: center;
+  color: white;
+}
+.header .logo { font-size: 0.75em; letter-spacing: 4px; text-transform: uppercase; opacity: 0.8; margin-bottom: 12px; }
+.header h1 { font-family: 'DM Serif Display', serif; font-size: 2.2em; margin-bottom: 8px; line-height: 1.2; }
+.header p { opacity: 0.85; font-size: 1em; font-weight: 300; }
+.score-pills { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+.score-pill { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; padding: 6px 18px; font-size: 0.85em; font-weight: 500; }
+.content { padding: 40px; }
+.info-box { background: #eff6ff; border: 1px solid #bfdbfe; border-left: 4px solid var(--primary); border-radius: 10px; padding: 18px 22px; margin-bottom: 30px; font-size: 0.9em; line-height: 1.7; color: #1e40af; }
+.info-box ul { padding-left: 18px; margin-top: 6px; }
+.info-box li { margin-bottom: 3px; }
+.es-toggle { background:none; border:1px solid var(--primary); color:var(--primary); border-radius:6px; padding:3px 10px; font-size:0.78em; cursor:pointer; margin-top:8px; font-weight:600; }
+.es-block { display:none; margin-top:10px; padding-top:10px; border-top:1px dashed #bfdbfe; font-style:italic; color:#1e40af; }
+#savedBanner { background: #ecfdf5; border: 1px solid #6ee7b7; border-radius: 10px; padding: 12px 18px; margin-bottom: 20px; font-size: 0.88em; color: #065f46; display: none; align-items: center; gap: 10px; flex-wrap:wrap; }
+#savedBanner button { margin-left: auto; background: none; border: 1px solid #10b981; color: #065f46; padding: 4px 12px; border-radius: 6px; cursor: pointer; font-size: 0.85em; white-space: nowrap; }
+.progress-wrap { margin-bottom: 26px; }
+.progress-track { background: var(--bg); border-radius: 20px; height: 10px; overflow:hidden; }
+.progress-fill { height:100%; background: linear-gradient(90deg, var(--primary), var(--accent)); width:0%; transition: width .3s; }
+.progress-fill.complete { background: linear-gradient(90deg, var(--success), #059669); }
+.progress-label { font-size:0.8em; color:var(--muted); margin-top:6px; text-align:center; }
+.name-block { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 35px; }
+.name-block label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--primary); font-size: 0.95em; }
+.name-block input { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 1em; }
+.name-block input:focus { outline: none; border-color: var(--primary); }
+.section { margin-bottom: 40px; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+.section-header { padding: 18px 24px; display: flex; align-items: center; gap: 12px; }
+.section-header.listening { background: linear-gradient(135deg, #ede9fe, #ddd6fe); border-bottom: 1px solid #c4b5fd; }
+.section-header.reading { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-bottom: 1px solid #93c5fd; }
+.section-header.writing { background: linear-gradient(135deg, #fff1f2, #ffe4e6); border-bottom: 1px solid #fca5a5; }
+.section-header .icon { font-size: 1.5em; }
+.section-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.4em; color: var(--text); }
+.section-header .pts { margin-left: auto; background: white; border-radius: 20px; padding: 4px 14px; font-size: 0.82em; font-weight: 600; color: var(--primary); white-space: nowrap; }
+.section-body { padding: 28px; }
+.part-header { font-weight: 700; font-size: 1em; color: var(--secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px dashed #e9d5ff; }
+.part-instructions { background: #fafafa; border-radius: 8px; padding: 12px 16px; font-size: 0.9em; color: var(--muted); margin-bottom: 18px; line-height: 1.6; }
+.part-divider { border: none; border-top: 2px dashed var(--border); margin: 28px 0; }
+.audio-container { background: linear-gradient(135deg, #f5f3ff, #ede9fe); border: 1px solid #c4b5fd; border-radius: 12px; padding: 18px 22px; margin-bottom: 20px; }
+.audio-label { font-weight: 600; color: var(--secondary); margin-bottom: 10px; font-size: 0.95em; }
+audio { width: 100%; border-radius: 8px; margin-bottom: 8px; }
+.play-counter { font-size: 0.82em; font-weight: 600; color: var(--muted); background: white; display: inline-block; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
+.play-counter.warning { color: var(--warning); border-color: var(--warning); }
+.play-counter.limit { color: var(--danger); border-color: var(--danger); }
+.q-block { margin-bottom: 20px; }
+.q-label { display: flex; gap: 8px; align-items: baseline; font-size: 0.93em; font-weight: 600; margin-bottom: 8px; color: var(--text); line-height: 1.4; }
+.q-num { color: var(--secondary); min-width: 22px; font-weight: 700; }
+.q-pts { margin-left: auto; font-size: 0.82em; font-weight: 600; color: var(--muted); white-space: nowrap; background: var(--bg); padding: 2px 8px; border-radius: 10px; }
+.q-block textarea { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.93em; color: var(--text); resize: vertical; min-height: 68px; }
+.q-block textarea:focus { outline: none; border-color: var(--primary); }
+.reading-text-box { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 22px 26px; margin-bottom: 22px; line-height: 1.9; font-size: 0.95em; }
+.reading-text-box h4 { text-align: center; font-family: 'DM Serif Display', serif; font-size: 1.15em; margin-bottom: 6px; color: var(--text); }
+.reading-intro { text-align: center; font-style: italic; color: var(--muted); font-size: 0.9em; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.speaker-name { font-weight: 700; color: var(--primary); margin-top: 16px; margin-bottom: 4px; font-size: 0.95em; }
+.match-row { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 0.93em; }
+.match-row:last-child { border-bottom: none; }
+.match-n { font-weight: 700; color: var(--secondary); min-width: 22px; }
+.match-q { flex: 1; font-style: italic; color: var(--text); }
+.match-sel { padding: 6px 10px; border: 2px solid var(--border); border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 0.93em; font-weight: 600; color: var(--text); background: white; cursor: pointer; min-width: 64px; }
+.match-sel:focus { outline: none; border-color: var(--primary); }
+.advice-table { width: 100%; border-collapse: collapse; margin-bottom: 8px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.advice-table thead th { background: var(--primary); color: white; padding: 10px 14px; font-size: 0.82em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: left; }
+.advice-table tbody tr:nth-child(even) td { background: #f8fafc; }
+.advice-table tbody tr:hover td { background: #f0edff; }
+.advice-table td { padding: 11px 14px; font-size: 0.93em; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.advice-table tr:last-child td { border-bottom: none; }
+.advice-letter { font-weight: 700; color: var(--secondary); margin-right: 6px; }
+.advice-select { padding: 6px 10px; border: 2px solid var(--border); border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 0.93em; font-weight: 600; color: var(--text); background: white; cursor: pointer; width: 68px; }
+.advice-select:focus { outline: none; border-color: var(--primary); }
+.writing-textarea { width: 100%; min-height: 200px; padding: 16px; border: 2px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.95em; line-height: 1.7; resize: vertical; margin-top: 12px; }
+.writing-textarea:focus { outline: none; border-color: var(--primary); }
+.word-counter { font-size: 0.85em; font-weight: 600; color: var(--muted); margin-top: 6px; text-align: right; }
+.word-counter.good { color: var(--success); }
+.word-counter.warn { color: var(--warning); }
+.word-counter.bad { color: var(--danger); }
+.gemini-btn { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border: none; border-radius: 10px; padding: 12px 22px; font-family: 'DM Sans', sans-serif; font-size: 0.92em; font-weight: 600; cursor: pointer; margin-top: 14px; display: inline-flex; align-items: center; gap: 8px; }
+.gemini-btn:hover { opacity: 0.9; }
+.gemini-warn { display:none; background:#fef3c7; border:1px solid #fcd34d; color:#92400e; padding:8px 14px; border-radius:8px; font-size:0.82em; margin-top:10px; }
+.gemini-warn.visible { display:block; }
+.gr-row { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+.gr-row:last-child { border-bottom:none; }
+.gr-row label { flex:1; font-size:0.88em; color:var(--text); min-width:200px; }
+.gr-row input[type="number"] { width:70px; padding:6px 8px; border:2px solid var(--border); border-radius:6px; text-align:center; font-weight:700; }
+.gr-row input[type="number"]:focus { outline:none; border-color:var(--primary); }
+.gr-row input[type="number"].locked { background:#f1f5f9; color:var(--muted); border-color:var(--border); cursor:not-allowed; }
+.blank-badge { display:inline-block; background:#fee2e2; color:#b91c1c; font-size:.78em; font-weight:700; padding:3px 10px; border-radius:20px; margin-left:8px; }
+.gemini-block { background:#f5f3ff; border:1px solid #c4b5fd; border-radius:12px; padding:20px 22px; margin-top:18px; }
+.gemini-block h4 { color:var(--secondary); margin-bottom:10px; font-size:1em; }
+.pending-note { font-size:0.82em; color:var(--muted); margin-bottom:10px; }
+.confirm-gemini-btn { background: linear-gradient(135deg, #10b981, #059669); color:white; border:none; border-radius:10px; padding:10px 20px; font-family:'DM Sans',sans-serif; font-weight:600; cursor:pointer; margin-top:14px; }
+.rubric-box { margin-top: 28px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.rubric-title { background: linear-gradient(135deg, #fff1f2, #ffe4e6); padding: 14px 20px; font-weight: 700; font-size: 0.95em; color: #be123c; border-bottom: 1px solid #fca5a5; }
+.rubric-note { padding: 10px 20px; font-size: 0.82em; color: var(--muted); background: #fafafa; border-bottom: 1px solid var(--border); }
+.criterion { padding: 18px 20px; border-bottom: 1px solid var(--border); }
+.criterion:last-child { border-bottom: none; }
+.criterion h4 { font-size: 0.93em; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+.criterion-options { display: flex; flex-direction: column; gap: 6px; }
+.criterion-options label { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 0.88em; line-height: 1.4; }
+.criterion-options label:hover { border-color: #fca5a5; background: #fff1f2; }
+.criterion-options input[type="radio"] { accent-color: #ef4444; flex-shrink: 0; margin-top: 2px; }
+.rubric-subtotal { background: #fdf2f8; padding: 12px 20px; font-weight: 700; font-size: 0.9em; color: var(--secondary); text-align: right; }
+.calculate-btn { display: block; width: 100%; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 14px; padding: 18px; font-family: 'DM Serif Display', serif; font-size: 1.3em; cursor: pointer; margin: 30px 0 0; }
+.calculate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(16,185,129,0.35); }
+#blankWarning { display:none; background:#fffbeb; border:1px solid #fcd34d; border-radius:12px; padding:18px 20px; margin-top:20px; }
+#blankWarning strong { color:#92400e; }
+#blankWarning ul { list-style:none; margin-top:10px; }
+#blankWarning li { margin-bottom:6px; }
+.blank-link { background:none; border:1px solid #f59e0b; color:#92400e; padding:4px 10px; border-radius:6px; cursor:pointer; font-size:0.85em; }
+.dismiss-btn { display:block; margin-top:14px; background:#f59e0b; color:white; border:none; padding:10px 18px; border-radius:8px; font-weight:600; cursor:pointer; }
+#results { display: none; margin-top: 30px; }
+.results-card { background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border: 1px solid #6ee7b7; border-radius: 16px; padding: 30px; margin-bottom: 24px; }
+.results-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.5em; color: #065f46; margin-bottom: 20px; text-align: center; }
+.score-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #a7f3d0; font-size: 0.95em; }
+.score-row:last-child { border-bottom: none; font-weight: 700; font-size: 1.05em; }
+.grade-display { text-align: center; margin-top: 20px; padding: 20px; background: white; border-radius: 12px; border: 2px solid #10b981; }
+.grade-display .grade-number { font-family: 'DM Serif Display', serif; font-size: 3.5em; color: var(--primary); line-height: 1; }
+.grade-display .grade-label { color: var(--muted); font-size: 0.85em; margin-top: 4px; }
+.grade-display .grade-msg { font-size: 0.9em; margin-top: 8px; font-weight: 600; color: var(--text); }
+.pending-badge { color: var(--warning); font-weight:700; }
+.summary-dots { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+.dot { width: 14px; height: 14px; border-radius: 50%; }
+.dot.correct { background: var(--success); }
+.dot.incorrect { background: var(--danger); }
+.section-feedback-msg { padding:14px 18px; border-radius:10px; margin-bottom:16px; font-size:0.9em; line-height:1.6; }
+.section-feedback-msg.great { background:#ecfdf5; border:1px solid #6ee7b7; color:#065f46; }
+.section-feedback-msg.good { background:#fffbeb; border:1px solid #fcd34d; color:#92400e; }
+.section-feedback-msg.needswork { background:#fef2f2; border:1px solid #fca5a5; color:#991b1b; }
+.msg-tips { margin-top:8px; padding-left:18px; }
+.partial-feedback-bar { background:#fffbeb; border:1px solid #fcd34d; border-radius:12px; padding:16px 20px; margin-top:20px; }
+.partial-feedback-bar p { font-size:0.88em; color:#92400e; margin-bottom:10px; }
+#partialBtn { background:none; border:1px solid #f59e0b; color:#92400e; padding:6px 14px; border-radius:8px; cursor:pointer; font-weight:600; }
+#partialNote { font-size:0.82em; color:var(--muted); font-style:italic; margin-bottom:12px; }
+.filter-tabs { display:flex; gap:8px; flex-wrap:wrap; margin: 20px 0; }
+.filter-tab { background:white; border:1px solid var(--border); padding:7px 14px; border-radius:20px; font-size:0.82em; font-weight:600; cursor:pointer; color:var(--muted); }
+.filter-tab.active { background: var(--primary); color:white; border-color:var(--primary); }
+.feedback-part { margin-bottom: 20px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.feedback-part-header { padding: 12px 18px; font-weight: 700; font-size: 0.9em; display: flex; align-items: center; gap: 8px; }
+.feedback-part-header.listening { background: #ede9fe; color: var(--secondary); }
+.feedback-part-header.reading { background: #dbeafe; color: #1d4ed8; }
+.feedback-part-header.writing { background: #ffe4e6; color: #be123c; }
+.feedback-item { padding: 14px 18px; border-bottom: 1px solid var(--border); font-size: 0.88em; line-height: 1.5; }
+.feedback-item:last-child { border-bottom: none; }
+.feedback-item .q-label { font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.feedback-item .student-ans { color: var(--muted); }
+.feedback-item .correct-ans { color: var(--success); font-weight: 600; }
+.feedback-item .explanation { margin-top: 5px; color: #64748b; font-style: italic; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; font-weight: 700; }
+.tag.correct-tag { background: #dcfce7; color: #15803d; }
+.tag.incorrect-tag { background: #fee2e2; color: #b91c1c; }
+.tag.info-tag { background: #dbeafe; color: #1d4ed8; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+.modal-overlay.active { display: flex; }
+.modal { background: white; border-radius: 16px; padding: 36px 32px; max-width: 440px; width: 92%; text-align: center; box-shadow: 0 20px 60px rgba(79,70,229,0.25); }
+.modal-icon { font-size: 48px; margin-bottom: 14px; }
+.modal h3 { font-family: 'DM Serif Display', serif; font-size: 1.5em; color: var(--text); margin-bottom: 12px; }
+.modal p { font-size: 0.9em; color: var(--muted); margin-bottom: 18px; line-height: 1.6; }
+.modal ol { text-align:left; font-size:0.88em; color:var(--text); margin: 0 auto 20px; max-width:300px; line-height:1.8; }
+.modal-btns { display: flex; gap: 12px; }
+.modal-btn { flex: 1; padding: 12px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.93em; font-weight: 600; cursor: pointer; border: none; }
+.modal-btn:hover { opacity: 0.88; }
+.modal-btn.cancel { background: #f1f5f9; color: var(--muted); }
+.modal-btn.go { background: linear-gradient(135deg, #4285F4, #34A853); color: white; }
+#saveToast { display: none; position: fixed; bottom: 22px; right: 22px; background: var(--success); color: white; padding: 10px 18px; border-radius: 8px; font-size: 0.85em; font-weight: 600; z-index: 999; box-shadow: 0 4px 14px rgba(16,185,129,0.3); }
+@media (max-width: 768px) {
+  .content { padding: 20px; }
+  .header { padding: 28px 20px; }
+  .header h1 { font-size: 1.6em; }
+  .section-body { padding: 18px; }
+  .score-pills { gap: 8px; }
+  .score-pill { font-size: 0.78em; padding: 5px 12px; }
+  .gr-row label { min-width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="logo">DuocUC · Inglés Intermedio I</div>
+    <h1>INU5101 — Written Midterm Mock Test</h1>
+    <p>Mock test de práctica — no reemplaza la prueba oficial</p>
+    <div class="score-pills">
+      <span class="score-pill">🎧 Listening: 12 pts</span>
+      <span class="score-pill">📖 Reading: 12 pts</span>
+      <span class="score-pill">✍️ Writing: 12 pts</span>
+      <span class="score-pill">Total: 36 pts</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="info-box">
+      <strong>Instructions:</strong> This mock test has three parts: Listening, Reading, and Writing.
+      You may listen to each audio a maximum of two times. Complete all sections and click
+      "Calcular mi nota" at the end to see your results.
+      <ul>
+        <li>Listening: 2 parts, 12 points total</li>
+        <li>Reading: 2 parts, 12 points total</li>
+        <li>Writing: 1 email, 12 points total</li>
+      </ul>
+      <button class="es-toggle" onclick="toggleEs('es-directions')">🌐 Ver en español</button>
+      <div class="es-block" id="es-directions">
+        <strong>Instrucciones:</strong> Este mock test tiene tres partes: Listening, Reading y Writing.
+        Puedes escuchar cada audio un máximo de dos veces. Completa todas las secciones y presiona
+        "Calcular mi nota" al final para ver tus resultados.
+      </div>
+    </div>
+
+    <div id="savedBanner">
+      🗑️ Tienes respuestas guardadas.
+      <button onclick="clearAllAnswers()">Borrar y empezar de nuevo</button>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0 de 30 preguntas respondidas</div>
+    </div>
+
+    <div class="name-block">
+      <label for="studentName">Nombre del estudiante</label>
+      <input type="text" id="studentName" placeholder="Escribe tu nombre completo" oninput="saveAll()">
+    </div>
+
+    <!-- ============ LISTENING ============ -->
+    <div class="section">
+      <div class="section-header listening">
+        <span class="icon">🎧</span>
+        <h2>Listening</h2>
+        <span class="pts">12 pts</span>
+      </div>
+      <div class="section-body">
+
+        <div class="part-header">Part A — 6 points</div>
+        <div class="part-instructions">
+          Listen to a short audio guide about a food market. Match each statement (1–6) to the
+          correct ending. There are two extra options you do NOT need to use. You may listen twice.
+          <button class="es-toggle" onclick="toggleEs('es-la')">🌐 Ver en español</button>
+          <div class="es-block" id="es-la">Escucha una breve guía de audio sobre un mercado de comida.
+          Selecciona el final correcto para cada afirmación (1–6). Hay dos opciones extra que NO necesitas
+          usar. Puedes escuchar el audio dos veces.</div>
+        </div>
+
+        <div class="audio-container">
+          <div class="audio-label">🔊 Audio 1 — Sabor Market</div>
+          <audio id="audioLA" controls preload="metadata" playsinline onplay="trackPlay('audioLA')">
+            <source src="https://github.com/Moncholate/INU5101-Midterm-Written-Mock-Test/raw/refs/heads/main/Listening%20A.mp3" type="audio/mpeg">
+          </audio>
+          <div class="play-counter" id="counter_audioLA">Plays: 0 / 2</div>
+        </div>
+
+        <table class="advice-table" id="mc-grid-la">
+          <thead><tr><th>#</th><th>Statement</th><th>Answer</th></tr></thead>
+          <tbody>
+            <tr><td><span class="advice-letter">1</span></td><td>Sabor Market is located…</td>
+              <td><select class="advice-select" id="la1" onchange="saveAll()">
+                <option value="">--</option><option value="A">A</option><option value="B">B</option>
+                <option value="C">C</option><option value="D">D</option><option value="E">E</option>
+                <option value="F">F</option><option value="G">G</option><option value="H">H</option>
+              </select></td></tr>
+            <tr><td><span class="advice-letter">2</span></td><td>The rooftop terrace was designed by…</td>
+              <td><select class="advice-select" id="la2" onchange="saveAll()">
+                <option value="">--</option><option value="A">A</option><option value="B">B</option>
+                <option value="C">C</option><option value="D">D</option><option value="E">E</option>
+                <option value="F">F</option><option value="G">G</option><option value="H">H</option>
+              </select></td></tr>
+            <tr><td><span class="advice-letter">3</span></td><td>The market is closed on…</td>
+              <td><select class="advice-select" id="la3" onchange="saveAll()">
+                <option value="">--</option><option value="A">A</option><option value="B">B</option>
+                <option value="C">C</option><option value="D">D</option><option value="E">E</option>
+                <option value="F">F</option><option value="G">G</option><option value="H">H</option>
+              </select></td></tr>
+            <tr><td><span class="advice-letter">4</span></td><td>Live music plays…</td>
+              <td><select class="advice-select" id="la4" onchange="saveAll()">
+                <option value="">--</option><option value="A">A</option><option value="B">B</option>
+                <option value="C">C</option><option value="D">D</option><option value="E">E</option>
+                <option value="F">F</option><option value="G">G</option><option value="H">H</option>
+              </select></td></tr>
+            <tr><td><span class="advice-letter">5</span></td><td>On Fridays, stall workers wear…</td>
+              <td><select class="advice-select" id="la5" onchange="saveAll()">
+                <option value="">--</option><option value="A">A</option><option value="B">B</option>
+                <option value="C">C</option><option value="D">D</option><option value="E">E</option>
+                <option value="F">F</option><option value="G">G</option><option value="H">H</option>
+              </select></td></tr>
+            <tr><td><span class="advice-letter">6</span></td><td>Visitors who forget their bag can…</td>
+              <td><select class="advice-select" id="la6" onchange="saveAll()">
+                <option value="">--</option><option value="A">A</option><option value="B">B</option>
+                <option value="C">C</option><option value="D">D</option><option value="E">E</option>
+                <option value="F">F</option><option value="G">G</option><option value="H">H</option>
+              </select></td></tr>
+          </tbody>
+        </table>
+        <div class="reading-text-box" style="font-size:0.88em; margin-top:14px;">
+          <strong>A)</strong> …a green apron with the market's logo.<br>
+          <strong>B)</strong> …near the river, close to the train station.<br>
+          <strong>C)</strong> …a young architecture team from Lisbon.<br>
+          <strong>D)</strong> …buy a paper bag.<br>
+          <strong>E)</strong> …Mondays.<br>
+          <strong>F)</strong> …a red apron for the seafood festival.<br>
+          <strong>G)</strong> …from midday until early evening on weekends.<br>
+          <strong>H)</strong> …free bags for every visitor.
+        </div>
+
+        <hr class="part-divider">
+
+        <div class="part-header">Part B — 6 points</div>
+        <div class="part-instructions">
+          Listen to a conversation between two friends. Select the correct order number (1–6) for
+          each event. You may listen twice.
+          <button class="es-toggle" onclick="toggleEs('es-lb')">🌐 Ver en español</button>
+          <div class="es-block" id="es-lb">Escucha una conversación entre dos amigos. Selecciona el número
+          de orden correcto (1–6) para cada evento. Puedes escuchar el audio dos veces.</div>
+        </div>
+
+        <div class="audio-container">
+          <div class="audio-label">🔊 Audio 2 — Volunteering at a charity run</div>
+          <audio id="audioLB" controls preload="metadata" playsinline onplay="trackPlay('audioLB')">
+            <source src="https://github.com/Moncholate/INU5101-Midterm-Written-Mock-Test/raw/refs/heads/main/Listening%20B.mp3" type="audio/mpeg">
+          </audio>
+          <div class="play-counter" id="counter_audioLB">Plays: 0 / 2</div>
+        </div>
+
+        <div id="tf-block-1">
+          <div class="match-row"><span class="match-n">A</span><span class="match-q">They help with the awards ceremony.</span>
+            <select class="match-sel" id="lb_A" onchange="saveAll()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+          <div class="match-row"><span class="match-n">B</span><span class="match-q">They set up the water stations early in the morning.</span>
+            <select class="match-sel" id="lb_B" onchange="saveAll()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+          <div class="match-row"><span class="match-n">C</span><span class="match-q">Volunteers are given lunch.</span>
+            <select class="match-sel" id="lb_C" onchange="saveAll()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+          <div class="match-row"><span class="match-n">D</span><span class="match-q">Registration for volunteers closes.</span>
+            <select class="match-sel" id="lb_D" onchange="saveAll()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+          <div class="match-row"><span class="match-n">E</span><span class="match-q">The race begins.</span>
+            <select class="match-sel" id="lb_E" onchange="saveAll()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+          <div class="match-row"><span class="match-n">F</span><span class="match-q">They hand out water bottles at station three.</span>
+            <select class="match-sel" id="lb_F" onchange="saveAll()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ READING ============ -->
+    <div class="section">
+      <div class="section-header reading">
+        <span class="icon">📖</span>
+        <h2>Reading</h2>
+        <span class="pts">12 pts</span>
+      </div>
+      <div class="section-body">
+
+        <div class="part-header">Part A — 6 points</div>
+        <div class="part-instructions">
+          Read the article "New City, New Habits." Select the person who expressed each main idea.
+          There is one extra idea you do not need to use.
+          <button class="es-toggle" onclick="toggleEs('es-ra')">🌐 Ver en español</button>
+          <div class="es-block" id="es-ra">Lee el artículo "New City, New Habits". Selecciona la persona que
+          expresó cada idea principal. Hay una idea extra que no necesitas usar.</div>
+        </div>
+
+        <div class="reading-text-box">
+          <h4>New City, New Habits</h4>
+          <p class="reading-intro">Every semester, City University asks exchange students to share what
+          has surprised them most since arriving. This semester, we spoke to three students.</p>
+          <div class="speaker-name">A) Lena, 22, Germany</div>
+          <p>The thing that surprised me most is that almost all the shops close on Sundays, even the small
+          ones near my apartment. At home, some shops are open, so I never had to plan my shopping in
+          advance. Now I always buy everything I need for the weekend on Saturday afternoon, or I have
+          nothing to eat on Sunday! I also notice that Sunday here is really a family day — streets are
+          quiet and most people stay home or visit relatives.</p>
+          <div class="speaker-name">B) Diego, 24, Argentina</div>
+          <p>For me, the biggest surprise was how quiet public transport is. On the bus or the train, nobody
+          talks loudly, and most passengers are reading a book or listening to something with headphones.
+          Back home, buses are full of conversation and sometimes even music. At first I felt a bit lonely,
+          but now I actually enjoy the calm — it gives me time to think or study before class.</p>
+          <div class="speaker-name">C) Priya, 21, India</div>
+          <p>I didn't expect how far in advance people plan things here. My classmates book a table at a
+          popular restaurant two or three weeks before going, even for a casual dinner! Where I'm from, you
+          can usually just walk in. Now I try to plan ahead too, but I still miss being able to decide
+          something fun at the last minute.</p>
+        </div>
+
+        <div id="ra-block">
+          <div class="match-row" id="ra-row-1"><span class="match-n">1</span><span class="match-q">Public transport is unusually quiet, with passengers reading or using headphones.</span>
+            <select class="match-sel" id="ra1" onchange="saveAll()"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></div>
+          <div class="match-row" id="ra-row-2"><span class="match-n">2</span><span class="match-q">People usually book restaurant tables far in advance, even for casual dinners.</span>
+            <select class="match-sel" id="ra2" onchange="saveAll()"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></div>
+          <div class="match-row" id="ra-row-3"><span class="match-n">3</span><span class="match-q">Sunday shopping requires planning ahead because most shops are closed.</span>
+            <select class="match-sel" id="ra3" onchange="saveAll()"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></div>
+          <div class="match-row" id="ra-row-4"><span class="match-n">4</span><span class="match-q">Nightlife in the city starts much later than back home. <em>(extra — no correct match)</em></span>
+            <select class="match-sel" id="ra4" onchange="saveAll()"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></div>
+          <div class="match-row" id="ra-row-5"><span class="match-n">5</span><span class="match-q">The calm on public transport gives extra time to think or study.</span>
+            <select class="match-sel" id="ra5" onchange="saveAll()"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></div>
+          <div class="match-row" id="ra-row-6"><span class="match-n">6</span><span class="match-q">Sundays are generally spent quietly, often visiting family.</span>
+            <select class="match-sel" id="ra6" onchange="saveAll()"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></div>
+          <div class="match-row" id="ra-row-7"><span class="match-n">7</span><span class="match-q">Spontaneous plans are harder to make now than back home.</span>
+            <select class="match-sel" id="ra7" onchange="saveAll()"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></div>
+        </div>
+
+        <hr class="part-divider">
+
+        <div class="part-header">Part B — 6 points</div>
+        <div class="part-instructions">
+          Read the text "Learning to surf" and type your answer for each question in the box.
+          <button class="es-toggle" onclick="toggleEs('es-rb')">🌐 Ver en español</button>
+          <div class="es-block" id="es-rb">Lee el texto "Learning to surf" y escribe tu respuesta para cada
+          pregunta en el recuadro.</div>
+        </div>
+
+        <div class="reading-text-box">
+          <h4>Learning to surf</h4>
+          <p>Last winter, I decided to try something completely new: surfing. I had been watching surfing
+          videos online for months, and I finally saved enough money for a two-week trip to a surf camp in
+          Portugal.</p>
+          <p>Before the trip, I bought a wetsuit and read every beginner's guide I could find. I was so
+          excited that I could barely sleep the night before I left. When I arrived at the camp, the owner
+          welcomed me with a big smile and showed me to a comfortable room with a view of the ocean.</p>
+          <p>The next morning, my problems started. The waves were much bigger than I expected, and the
+          beach was already full of experienced surfers. I couldn't even stand up on the board. Other
+          surfers were laughing and joking around me while I kept falling into the water. By the end of the
+          morning, I felt embarrassed and a little sad.</p>
+          <p>That afternoon, while I was resting on the sand, an older surfer named Manuel came over and
+          offered to give me a private lesson at a quieter beach nearby. We spent two hours there, and by
+          sunset, I finally stood up on the board for a few seconds. It was a wonderful feeling.</p>
+          <p>The next day, I went back to the quiet beach with Manuel and two other beginners. We practiced
+          together, helped each other, and laughed a lot. Now, when I think about my surfing trip, I don't
+          only remember the waves — I remember the people I met and how they helped me.</p>
+        </div>
+
+        <div class="q-block"><div class="q-label"><span class="q-num">1.</span> Why did the writer decide to try surfing? <span class="q-pts">1 pt</span></div>
+          <textarea id="rb_q1" oninput="saveAll()"></textarea></div>
+        <div class="q-block"><div class="q-label"><span class="q-num">2.</span> What special item did the writer need for the ocean? <span class="q-pts">1 pt</span></div>
+          <textarea id="rb_q2" oninput="saveAll()"></textarea></div>
+        <div class="q-block"><div class="q-label"><span class="q-num">3.</span> Describe the writer's mood the night before the trip began. <span class="q-pts">1 pt</span></div>
+          <textarea id="rb_q3" oninput="saveAll()"></textarea></div>
+        <div class="q-block"><div class="q-label"><span class="q-num">4.</span> What was the beach like on the first morning? <span class="q-pts">1 pt</span></div>
+          <textarea id="rb_q4" oninput="saveAll()"></textarea></div>
+        <div class="q-block"><div class="q-label"><span class="q-num">5.</span> Who helped the writer improve at surfing, and how? <span class="q-pts">1 pt</span></div>
+          <textarea id="rb_q5" oninput="saveAll()"></textarea></div>
+        <div class="q-block"><div class="q-label"><span class="q-num">6.</span> Why was the writer's trip memorable? Give your opinion. <span class="q-pts">1 pt</span></div>
+          <textarea id="rb_q6" oninput="saveAll()"></textarea></div>
+
+        <button class="gemini-btn" onclick="copyForGemini('rb')">🤖 Consultar con Gemini</button>
+        <div class="gemini-warn" id="geminiWarnRB">⚠️ <span>Escribe al menos una respuesta antes de consultar con Gemini.</span></div>
+
+        <div class="gemini-block">
+          <h4>📥 Ingresa los puntajes que te dio Gemini</h4>
+          <p class="pending-note">Usa el puntaje del <strong>Bloque 2</strong> que Gemini entrega al final de su respuesta (0, 0.5 o 1 por pregunta).</p>
+          <div class="gr-row"><label>📝 Pregunta 1 (máx. 1 pt)</label><input type="number" id="rb_gscore1" min="0" max="1" step="0.5" oninput="saveAll()"></div>
+          <div class="gr-row"><label>📝 Pregunta 2 (máx. 1 pt)</label><input type="number" id="rb_gscore2" min="0" max="1" step="0.5" oninput="saveAll()"></div>
+          <div class="gr-row"><label>📝 Pregunta 3 (máx. 1 pt)</label><input type="number" id="rb_gscore3" min="0" max="1" step="0.5" oninput="saveAll()"></div>
+          <div class="gr-row"><label>📝 Pregunta 4 (máx. 1 pt)</label><input type="number" id="rb_gscore4" min="0" max="1" step="0.5" oninput="saveAll()"></div>
+          <div class="gr-row"><label>📝 Pregunta 5 (máx. 1 pt)</label><input type="number" id="rb_gscore5" min="0" max="1" step="0.5" oninput="saveAll()"></div>
+          <div class="gr-row"><label>📝 Pregunta 6 (máx. 1 pt)</label><input type="number" id="rb_gscore6" min="0" max="1" step="0.5" oninput="saveAll()"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ WRITING ============ -->
+    <div class="section">
+      <div class="section-header writing">
+        <span class="icon">✍️</span>
+        <h2>Writing</h2>
+        <span class="pts">12 pts</span>
+      </div>
+      <div class="section-body">
+        <div class="part-instructions">
+          Last weekend you went to a friend's surprise birthday party. Another friend who couldn't attend is
+          curious about it. Write an email telling them what happened (80 words minimum). Use these
+          questions to guide your writing:
+          <ul style="margin-top:8px; padding-left:18px;">
+            <li>Where was the party? Who organized it?</li>
+            <li>How did you find out it was a surprise?</li>
+            <li>What did people do at the party? What was the atmosphere like?</li>
+            <li>Would you recommend this kind of celebration? Why?</li>
+          </ul>
+          <button class="es-toggle" onclick="toggleEs('es-wr')">🌐 Ver en español</button>
+          <div class="es-block" id="es-wr">El fin de semana pasado fuiste a una fiesta sorpresa de
+          cumpleaños de un amigo. Otro amigo que no pudo asistir tiene curiosidad. Escribe un correo
+          contándole qué pasó (mínimo 80 palabras), usando las preguntas guía de arriba.</div>
+        </div>
+
+        <textarea class="writing-textarea" id="writingText" oninput="updateWordCount();saveAll()" placeholder="Write your email here…"></textarea>
+        <div class="word-counter" id="wordCounter">Palabras: 0 / mínimo 80</div>
+
+        <button class="gemini-btn" onclick="copyForGemini('w')">🤖 Consultar con Gemini</button>
+        <div class="gemini-warn" id="geminiWarnW">⚠️ <span>Escribe tu email antes de consultar con Gemini.</span></div>
+
+        <div class="rubric-box">
+          <div class="rubric-title">✍️ Rúbrica de Writing</div>
+          <div class="rubric-note">Completa esta rúbrica usando la evaluación por criterio que te entregó Gemini. Selecciona el nivel que Gemini indicó para cada criterio.</div>
+
+          <div class="criterion"><h4>1. Coherencia y extensión</h4>
+            <div class="criterion-options">
+              <label><input type="radio" name="rub1" value="4" onchange="updateRubric();saveAll()"><div><div>Totalmente Logrado <strong>(4 pts)</strong></div><div style="color:var(--muted);font-size:0.85em;">Escribe al menos 80 palabras, presentando todas las ideas requeridas de forma coherente.</div></div></label>
+              <label><input type="radio" name="rub1" value="3.2" onchange="updateRubric();saveAll()"><div><div>Logrado <strong>(3.2 pts)</strong></div><div style="color:var(--muted);font-size:0.85em;">Escribe entre 79 y 60 palabras, presentando todas las ideas requeridas de forma coherente.</div></div></label>
+              <label><input type="radio" name="rub1" value="2.4" onchange="updateRubric();saveAll()"><div><div>Parcialmente Logrado <strong>(2.4 pts)</strong></div><div style="color:var(--muted);font-size:0.85em;">Escribe entre 59 y 40 palabras, con cobertura parcial y/o alguna idea incoherente.</div></div></label>
+              <label><input type="radio" name="rub1" value="1.2" onchange="updateRubric();saveAll()"><div><div>Insuficientemente Logrado <strong>(1.2 pts)</strong></div><div style="color:var(--muted);font-size:0.85em;">Escribe entre 39 y 20 palabras, con baja cobertura y/o incoherencia general.</div></div></label>
+              <label><input type="radio" name="rub1" value="0" onchange="updateRubric();saveAll()"><div><div>No Logrado <strong>(0 pts)</strong></div><div style="color:var(--muted);font-size:0.85em;">Escribe menos de 20 palabras y/o no responde al estímulo.</div></div></label>
+            </div></div>
+
+          <div class="criterion"><h4>2. Vocabulario</h4>
+            <div class="criterion-options">
+              <label><input type="radio" name="rub2" value="3" onchange="updateRubric();saveAll()"><div>Totalmente Logrado <strong>(3 pts)</strong> — 6 o más palabras del vocabulario aprendido, en contexto adecuado.</div></label>
+              <label><input type="radio" name="rub2" value="2.4" onchange="updateRubric();saveAll()"><div>Logrado <strong>(2.4 pts)</strong> — al menos 5 palabras correctas.</div></label>
+              <label><input type="radio" name="rub2" value="1.8" onchange="updateRubric();saveAll()"><div>Parcialmente Logrado <strong>(1.8 pts)</strong> — al menos 4 palabras correctas.</div></label>
+              <label><input type="radio" name="rub2" value="0.9" onchange="updateRubric();saveAll()"><div>Insuficientemente Logrado <strong>(0.9 pts)</strong> — al menos 3 palabras correctas.</div></label>
+              <label><input type="radio" name="rub2" value="0" onchange="updateRubric();saveAll()"><div>No Logrado <strong>(0 pts)</strong> — 2 o menos palabras, o uso incorrecto.</div></label>
+            </div></div>
+
+          <div class="criterion"><h4>3. Gramática</h4>
+            <div class="criterion-options">
+              <label><input type="radio" name="rub3" value="3" onchange="updateRubric();saveAll()"><div>Totalmente Logrado <strong>(3 pts)</strong> — máximo 1 error sin impacto en la comprensión.</div></label>
+              <label><input type="radio" name="rub3" value="2.4" onchange="updateRubric();saveAll()"><div>Logrado <strong>(2.4 pts)</strong> — entre 2 y 3 errores sin impacto en la comprensión.</div></label>
+              <label><input type="radio" name="rub3" value="1.8" onchange="updateRubric();saveAll()"><div>Parcialmente Logrado <strong>(1.8 pts)</strong> — 4 o 5 errores, dificultan parcialmente la comprensión.</div></label>
+              <label><input type="radio" name="rub3" value="0.9" onchange="updateRubric();saveAll()"><div>Insuficientemente Logrado <strong>(0.9 pts)</strong> — 6 o 7 errores, dificultan significativamente la comprensión.</div></label>
+              <label><input type="radio" name="rub3" value="0" onchange="updateRubric();saveAll()"><div>No Logrado <strong>(0 pts)</strong> — 8 o más errores, impiden la comprensión.</div></label>
+            </div></div>
+
+          <div class="criterion"><h4>4. Ortografía</h4>
+            <div class="criterion-options">
+              <label><input type="radio" name="rub4" value="2" onchange="updateRubric();saveAll()"><div>Totalmente Logrado <strong>(2 pts)</strong> — máximo 2 errores ortográficos.</div></label>
+              <label><input type="radio" name="rub4" value="1.6" onchange="updateRubric();saveAll()"><div>Logrado <strong>(1.6 pts)</strong> — 3 a 4 errores, mensaje comprensible.</div></label>
+              <label><input type="radio" name="rub4" value="1.2" onchange="updateRubric();saveAll()"><div>Parcialmente Logrado <strong>(1.2 pts)</strong> — 5 a 6 errores, afectan parcialmente el mensaje.</div></label>
+              <label><input type="radio" name="rub4" value="0.6" onchange="updateRubric();saveAll()"><div>Insuficientemente Logrado <strong>(0.6 pts)</strong> — 7 a 8 errores, dificultan la comprensión.</div></label>
+              <label><input type="radio" name="rub4" value="0" onchange="updateRubric();saveAll()"><div>No Logrado <strong>(0 pts)</strong> — más de 9 errores, impiden la comprensión.</div></label>
+            </div></div>
+
+          <div class="rubric-subtotal">Puntaje Writing: <span id="writingSubtotal">0</span> / 12 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="blankWarning">
+      <strong>⚠️ Hay preguntas sin responder:</strong>
+      <ul id="blankList"></ul>
+      <button class="dismiss-btn" onclick="document.getElementById('blankWarning').style.display='none'; calculateFinalGrade()">Continuar de todos modos →</button>
+    </div>
+
+    <button class="calculate-btn" onclick="checkBlanksAndCalculate()">📊 Calcular mi nota</button>
+
+    <div id="results">
+      <div class="results-card">
+        <h3 id="resultsTitle">📊 Resultados del Mock Test</h3>
+        <div class="score-row"><span class="score-label">🎧 Listening</span><span class="score-val" id="listeningDisplay">—</span></div>
+        <div class="score-row"><span class="score-label">📖 Reading</span><span class="score-val" id="readingDisplay">—</span></div>
+        <div class="score-row"><span class="score-label">✍️ Writing</span><span class="score-val" id="writingDisplay">—</span></div>
+        <div class="score-row total-row"><span class="score-label">Total</span><span class="score-val" id="totalDisplay">—</span></div>
+        <div class="grade-display">
+          <div class="grade-number" id="gradeDisplay">—</div>
+          <div class="grade-label">Nota (escala chilena)</div>
+          <div class="grade-msg" id="gradeMsg"></div>
+        </div>
+      </div>
+
+      <div class="partial-feedback-bar" id="partialBar" style="display:none;">
+        <p>⏳ <strong>Retroalimentación completa pendiente.</strong> Completa la revisión con Gemini en Reading B y Writing, ingresa los puntajes, y presiona "Ya ingresé mis puntajes de Gemini" para ver tu nota final.</p>
+        <button id="partialBtn" onclick="togglePartialFeedback()">👁 Ver retroalimentación parcial</button>
+      </div>
+
+      <div id="feedbackSection" style="display:none;">
+        <div class="filter-tabs" id="filterTabs" style="display:none;">
+          <button class="filter-tab active" onclick="filterFeedback('all', event)">Todas</button>
+          <button class="filter-tab" onclick="filterFeedback('listening', event)">🎧 Listening</button>
+          <button class="filter-tab" onclick="filterFeedback('reading', event)">📖 Reading</button>
+          <button class="filter-tab" onclick="filterFeedback('writing', event)">✍️ Writing</button>
+          <button class="filter-tab" onclick="filterFeedback('correct', event)">✓ Correctas</button>
+          <button class="filter-tab" onclick="filterFeedback('incorrect', event)">✗ Incorrectas</button>
+        </div>
+        <div id="partialNote" style="display:none;">👁 Mostrando solo secciones auto-corregidas (Listening y Reading Parte A).</div>
+
+        <div id="msgListening"></div>
+        <div class="feedback-part" data-section="listening">
+          <div class="feedback-part-header listening">🎧 Listening — Parte A <div class="summary-dots" id="dotsLA"></div></div>
+          <div id="fbLA"></div>
+        </div>
+        <div class="feedback-part" data-section="listening">
+          <div class="feedback-part-header listening">🎧 Listening — Parte B <div class="summary-dots" id="dotsLB"></div></div>
+          <div id="fbLB"></div>
+        </div>
+
+        <div id="msgReading"></div>
+        <div class="feedback-part" data-section="reading">
+          <div class="feedback-part-header reading">📖 Reading — Parte A <div class="summary-dots" id="dotsRA"></div></div>
+          <div id="fbRA"></div>
+        </div>
+        <div class="feedback-part" data-section="reading">
+          <div class="feedback-part-header reading">📖 Reading — Parte B (revisado con Gemini)</div>
+          <div id="fbRB"></div>
+        </div>
+
+        <div class="feedback-part" data-section="writing">
+          <div class="feedback-part-header writing">✍️ Writing (revisado con Gemini)</div>
+          <div id="fbWriting"></div>
+        </div>
+      </div>
+
+      <button class="confirm-gemini-btn" id="confirmGeminiBtn" onclick="updateWithGeminiScores()" style="display:none;">✅ Ya ingresé mis puntajes de Gemini</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal-overlay" id="geminiSuccessModal">
+  <div class="modal">
+    <span class="modal-icon">📋</span>
+    <h3>¡Texto copiado!</h3>
+    <p>El prompt con tus respuestas ya está en el portapapeles.</p>
+    <ol>
+      <li>Abre Gemini</li>
+      <li>Pega el texto (Ctrl+V o Cmd+V)</li>
+      <li>Ingresa los puntajes del Bloque 2 en el mock test</li>
+    </ol>
+    <div class="modal-btns">
+      <button class="modal-btn cancel" onclick="closeModal('geminiSuccessModal')">Cerrar</button>
+      <button class="modal-btn go" onclick="closeModal('geminiSuccessModal');window.open('https://gemini.google.com/','_blank')">Abrir Gemini ↗</button>
+    </div>
+  </div>
+</div>
+
+<div id="saveToast">✓ Respuestas guardadas</div>
+
+<script>
+/* ============ CONSTANTS ============ */
+const SAVE_KEY = 'mocktest_inu5101_v1';
+const TOTAL_QUESTIONS = 30; // LA6 + LB6 + RA7 + RB6 + Writing1 + Rubric4
+let autoGeminiDone = false;
+let saveTimer = null;
+
+const LA_KEY = {1:'B',2:'C',3:'E',4:'G',5:'F',6:'D'};
+const LB_KEY = {A:6,B:2,C:5,D:1,E:3,F:4};
+const RA_KEY = {1:'B',2:'C',3:'A',5:'B',6:'A',7:'C'}; // item 4 has no correct match (extra)
+
+const LA_TEXT = {A:"…a green apron with the market's logo.",B:"…near the river, close to the train station.",C:"…a young architecture team from Lisbon.",D:"…buy a paper bag.",E:"…Mondays.",F:"…a red apron for the seafood festival.",G:"…from midday until early evening on weekends.",H:"…free bags for every visitor."};
+const RA_TEXT = {A:'Lena',B:'Diego',C:'Priya'};
+
+/* ============ HELPERS ============ */
+function g(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+function getRadio(name) { const c = document.querySelector(`input[name="${name}"]:checked`); return c ? c.value : ''; }
+function toggleEs(id) { const el = document.getElementById(id); el.style.display = el.style.display === 'block' ? 'none' : 'block'; }
+function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+function showGeminiModal() { document.getElementById('geminiSuccessModal').classList.add('active'); }
+
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    el.style.outline = '3px solid #f59e0b';
+    setTimeout(() => { el.style.outline = ''; }, 2000);
+  }
+}
+
+/* ============ AUDIO PLAY COUNTER (never disables playback) ============ */
+const playCounts = {};
+function trackPlay(audioId) {
+  if (!playCounts[audioId]) playCounts[audioId] = 0;
+  playCounts[audioId]++;
+  const counter = document.getElementById('counter_' + audioId);
+  const count = playCounts[audioId];
+  if (count >= 2) {
+    counter.textContent = '⚠️ Límite de 2 reproducciones alcanzado (audio sigue disponible)';
+    counter.className = 'play-counter limit';
+  } else if (count === 1) {
+    counter.textContent = 'Plays: 1 / 2 — 1 reproducción restante';
+    counter.className = 'play-counter warning';
+  }
+}
+
+/* ============ WORD COUNTER ============ */
+function updateWordCount() {
+  const text = g('writingText').trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  const el = document.getElementById('wordCounter');
+  el.textContent = `Palabras: ${words} / mínimo 80`;
+  el.className = 'word-counter ' + (words >= 80 ? 'good' : words >= 40 ? 'warn' : 'bad');
+}
+
+/* ============ RUBRIC SUBTOTAL ============ */
+function updateRubric() {
+  const total = [1,2,3,4].reduce((sum, n) => sum + (parseFloat(getRadio('rub'+n)) || 0), 0);
+  document.getElementById('writingSubtotal').textContent = total.toFixed(1).replace(/\.0$/, '');
+}
+
+/* ============ AUTOSAVE ============ */
+function checkForAnswers() {
+  const ids = ['studentName','la1','la2','la3','la4','la5','la6','lb_A','lb_B','lb_C','lb_D','lb_E','lb_F',
+    'ra1','ra2','ra3','ra4','ra5','ra6','ra7','rb_q1','rb_q2','rb_q3','rb_q4','rb_q5','rb_q6','writingText'];
+  const has = ids.some(id => g(id).trim() !== '') || ['rub1','rub2','rub3','rub4'].some(n => getRadio(n) !== '');
+  document.getElementById('savedBanner').style.display = has ? 'flex' : 'none';
+}
+
+function saveAll() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    const ids = ['studentName','la1','la2','la3','la4','la5','la6','lb_A','lb_B','lb_C','lb_D','lb_E','lb_F',
+      'ra1','ra2','ra3','ra4','ra5','ra6','ra7','rb_q1','rb_q2','rb_q3','rb_q4','rb_q5','rb_q6',
+      'rb_gscore1','rb_gscore2','rb_gscore3','rb_gscore4','rb_gscore5','rb_gscore6','writingText'];
+    const data = {};
+    ids.forEach(id => data[id] = g(id));
+    ['rub1','rub2','rub3','rub4'].forEach(n => data[n] = getRadio(n));
+    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+    flashToast();
+  }, 500);
+  checkForAnswers();
+  updateProgress();
+}
+
+function loadSaved() {
+  const raw = localStorage.getItem(SAVE_KEY);
+  if (!raw) return;
+  const d = JSON.parse(raw);
+  Object.keys(d).forEach(id => {
+    if (['rub1','rub2','rub3','rub4'].includes(id)) return;
+    const el = document.getElementById(id);
+    if (el && d[id] !== undefined) el.value = d[id];
+  });
+  ['rub1','rub2','rub3','rub4'].forEach(name => {
+    if (d[name]) {
+      const r = document.querySelector(`input[name="${name}"][value="${d[name]}"]`);
+      if (r) r.checked = true;
+    }
+  });
+  updateWordCount();
+  updateRubric();
+  checkForAnswers();
+  updateProgress();
+}
+
+function clearAllAnswers() {
+  localStorage.removeItem(SAVE_KEY);
+  document.querySelectorAll('input[type="text"], textarea, input[type="number"]').forEach(el => el.value = '');
+  document.querySelectorAll('select').forEach(el => el.value = '');
+  document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+  updateWordCount();
+  updateRubric();
+  document.getElementById('savedBanner').style.display = 'none';
+  document.getElementById('results').style.display = 'none';
+  updateProgress();
+}
+
+function flashToast() {
+  const t = document.getElementById('saveToast');
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 1800);
+}
+
+/* ============ PROGRESS BAR ============ */
+function updateProgress() {
+  let answered = 0;
+  ['la1','la2','la3','la4','la5','la6','lb_A','lb_B','lb_C','lb_D','lb_E','lb_F','ra1','ra2','ra3','ra4','ra5','ra6','ra7'].forEach(id => { if (g(id) !== '') answered++; });
+  ['rb_q1','rb_q2','rb_q3','rb_q4','rb_q5','rb_q6'].forEach(id => { if (g(id).trim() !== '') answered++; });
+  if (g('writingText').trim() !== '') answered++;
+  ['rub1','rub2','rub3','rub4'].forEach(n => { if (getRadio(n) !== '') answered++; });
+  const pct = Math.round((answered / TOTAL_QUESTIONS) * 100);
+  const fill = document.getElementById('progressFill');
+  fill.style.width = pct + '%';
+  fill.className = 'progress-fill' + (answered === TOTAL_QUESTIONS ? ' complete' : '');
+  document.getElementById('progressLabel').textContent = answered === TOTAL_QUESTIONS
+    ? '✅ Todas las preguntas respondidas'
+    : `${answered} de ${TOTAL_QUESTIONS} preguntas respondidas`;
+  return answered;
+}
+
+/* ============ GEMINI PROMPTS (copyForGemini) ============ */
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+  } else {
+    fallbackCopy(text);
+  }
+}
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+function copyForGemini(section) {
+  let hasContent = false; let warnEl = null; let geminiText = '';
+
+  if (section === 'rb') {
+    warnEl = document.getElementById('geminiWarnRB');
+    hasContent = [1,2,3,4,5,6].some(n => g('rb_q'+n).trim() !== '');
+    if (!hasContent) { warnEl.classList.add('visible'); return; } else { warnEl.classList.remove('visible'); }
+
+    const models = {
+      1:"Because he/she had been watching surfing videos online for months.",
+      2:"A wetsuit.",
+      3:"Excited — he/she could barely sleep.",
+      4:"Full of experienced surfers, with waves much bigger than expected.",
+      5:"Manuel, an older surfer, gave a private lesson at a quieter beach.",
+      6:"Open answer — accept any justified opinion."
+    };
+    let qBlock = '';
+    for (let i=1;i<=6;i++) {
+      qBlock += `\nPregunta ${i}: ${document.querySelectorAll('.q-label')[i-1] ? document.querySelectorAll('.q-label')[i-1].textContent.trim() : ''}\nRespuesta modelo: ${models[i]}\nRespuesta del estudiante: ${g('rb_q'+i) || '(en blanco)'}\n`;
+    }
+
+    geminiText = `Eres un asistente pedagógico evaluando comprensión de lectura de un estudiante de inglés nivel B1 (Intermedio). NO menciones la institución ni el nombre del curso.
+
+TEXTO LEÍDO (resumen): Narrativa en primera persona sobre un viaje a un campamento de surf en Portugal. El narrador pasa por dificultades el primer día (olas grandes, vergüenza), pero un surfista mayor llamado Manuel le ofrece una clase privada en una playa más tranquila, y el narrador logra pararse en la tabla. El texto termina reflexionando sobre las personas que conoció.
+
+SISTEMA DE PUNTAJE: 1 pt = respuesta completa y correcta / 0.5 pt = parcialmente correcta / 0 pt = incorrecta o en blanco. La pregunta 6 es de opinión: acepta cualquier respuesta justificada con al menos una razón.
+
+IMPORTANTE: acepta paráfrasis y errores gramaticales menores si la información es correcta.
+${qBlock}
+ENTREGA TU RESPUESTA EN DOS BLOQUES SEPARADOS Y CLARAMENTE MARCADOS. NO mezcles el contenido de los bloques.
+
+🔷 BLOQUE 1 — EVALUACIÓN
+1. COMENTARIO GENERAL (2-3 frases sobre el desempeño general de comprensión lectora)
+2. EVALUACIÓN POR PREGUNTA (puntaje + justificación breve para cada una de las 6 preguntas)
+3. SUGERENCIAS DE MEJORA (2-3 sugerencias concretas)
+4. MENSAJE DE CIERRE (frase motivacional breve)
+
+🔶 BLOQUE 2 — RESUMEN DE PUNTAJE / PUNTAJES PARA INGRESAR EN EL MOCK TEST
+Pregunta 1 (máx. 1 pt): ___
+Pregunta 2 (máx. 1 pt): ___
+Pregunta 3 (máx. 1 pt): ___
+Pregunta 4 (máx. 1 pt): ___
+Pregunta 5 (máx. 1 pt): ___
+Pregunta 6 (máx. 1 pt): ___
+─────────────────────────
+Total sugerido: ___ / 6 pts`;
+  }
+
+  else if (section === 'w') {
+    warnEl = document.getElementById('geminiWarnW');
+    hasContent = g('writingText').trim() !== '';
+    if (!hasContent) { warnEl.classList.add('visible'); return; } else { warnEl.classList.remove('visible'); }
+
+    geminiText = `Eres un asistente pedagógico evaluando un texto de Writing de un estudiante de inglés nivel B1 (Intermedio) según una rúbrica de 4 criterios. NO menciones la institución ni el nombre del curso.
+
+TAREA DEL ESTUDIANTE: Escribir un email informal (mínimo 80 palabras) a un amigo contando sobre una fiesta sorpresa de cumpleaños a la que asistió, respondiendo: dónde fue, quién la organizó, cómo se enteró de la sorpresa, qué hicieron en la fiesta, cómo era el ambiente, y si recomendaría este tipo de celebración.
+
+RÚBRICA COMPLETA:
+1. Coherencia y extensión (4 pts): Totalmente Logrado (4) = 80+ palabras, todas las ideas, coherente. Logrado (3.2) = 60-79 palabras. Parcialmente Logrado (2.4) = 40-59 palabras, cobertura parcial. Insuficientemente Logrado (1.2) = 20-39 palabras. No Logrado (0) = menos de 20 palabras o no responde.
+2. Vocabulario (3 pts): Totalmente Logrado (3) = 6+ palabras de vocabulario aprendido correctas. Logrado (2.4) = 5. Parcialmente Logrado (1.8) = 4. Insuficientemente Logrado (0.9) = 3. No Logrado (0) = 2 o menos, o uso incorrecto.
+3. Gramática (3 pts): Totalmente Logrado (3) = máx 1 error. Logrado (2.4) = 2-3 errores. Parcialmente Logrado (1.8) = 4-5 errores. Insuficientemente Logrado (0.9) = 6-7 errores. No Logrado (0) = 8+ errores.
+4. Ortografía (2 pts): Totalmente Logrado (2) = máx 2 errores. Logrado (1.6) = 3-4 errores. Parcialmente Logrado (1.2) = 5-6 errores. Insuficientemente Logrado (0.6) = 7-8 errores. No Logrado (0) = 9+ errores.
+
+TEXTO DEL ESTUDIANTE:
+"${g('writingText')}"
+
+ENTREGA TU RESPUESTA EN DOS BLOQUES SEPARADOS Y CLARAMENTE MARCADOS. NO mezcles el contenido de los bloques.
+
+🔷 BLOQUE 1 — EVALUACIÓN
+1. ⚠️ ADVERTENCIA DE AUTENTICIDAD (indica si el texto muestra señales de uso de IA o traductor: vocabulario demasiado avanzado para B1, ausencia de errores típicos de interferencia del español, fluidez o coherencia inusualmente alta, conectores o expresiones idiomáticas avanzadas. Si no detectas señales, indícalo explícitamente.)
+2. COMENTARIO GENERAL (3-4 frases)
+3. EVALUACIÓN POR CRITERIO (nivel alcanzado, puntaje sugerido y justificación breve para cada uno de los 4 criterios)
+4. ERRORES ESPECÍFICOS (formato ✗ "error" → ✓ "corrección")
+5. SUGERENCIAS DE MEJORA (2-3 sugerencias concretas)
+6. MENSAJE DE CIERRE (frase motivacional breve)
+
+🔶 BLOQUE 2 — RESUMEN DE PUNTAJE / PUNTAJES PARA INGRESAR EN EL MOCK TEST
+Criterio 1 — Coherencia y extensión: ___ / 4 pts
+Criterio 2 — Vocabulario: ___ / 3 pts
+Criterio 3 — Gramática: ___ / 3 pts
+Criterio 4 — Ortografía: ___ / 2 pts
+─────────────────────────────────
+Total sugerido: ___ / 12 pts`;
+  }
+
+  copyToClipboard(geminiText);
+  showGeminiModal();
+}
+
+/* ============ BLANK-CHECK BEFORE CALCULATE ============ */
+function checkBlanksAndCalculate() {
+  const blanks = [];
+  const laLabels = {1:'Statement 1',2:'Statement 2',3:'Statement 3',4:'Statement 4',5:'Statement 5',6:'Statement 6'};
+  for (let i=1;i<=6;i++) if (g('la'+i) === '') blanks.push({label:`Listening A — ${laLabels[i]}`, targetId:'la'+i});
+  ['A','B','C','D','E','F'].forEach(l => { if (g('lb_'+l) === '') blanks.push({label:`Listening B — Evento ${l}`, targetId:'lb_'+l}); });
+  for (let i=1;i<=7;i++) if (g('ra'+i) === '') blanks.push({label:`Reading A — Idea ${i}`, targetId:'ra'+i});
+  for (let i=1;i<=6;i++) if (g('rb_q'+i).trim() === '') blanks.push({label:`Reading B — Pregunta ${i}`, targetId:'rb_q'+i});
+  if (g('writingText').trim() === '') blanks.push({label:'Writing — Email', targetId:'writingText'});
+
+  if (blanks.length === 0) {
+    document.getElementById('blankWarning').style.display = 'none';
+    calculateFinalGrade();
+    return;
+  }
+  const list = document.getElementById('blankList');
+  list.innerHTML = '';
+  blanks.forEach(b => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.className = 'blank-link';
+    btn.textContent = b.label;
+    btn.onclick = () => scrollToId(b.targetId);
+    li.appendChild(btn);
+    list.appendChild(li);
+  });
+  const warning = document.getElementById('blankWarning');
+  warning.style.display = 'block';
+  warning.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+/* ============ BLANK AUTO-ZERO FOR GEMINI-REVIEWED SECTIONS ============ */
+function applyBlankZeros() {
+  const items = [
+    {answerId:'rb_q1', scoreId:'rb_gscore1'}, {answerId:'rb_q2', scoreId:'rb_gscore2'},
+    {answerId:'rb_q3', scoreId:'rb_gscore3'}, {answerId:'rb_q4', scoreId:'rb_gscore4'},
+    {answerId:'rb_q5', scoreId:'rb_gscore5'}, {answerId:'rb_q6', scoreId:'rb_gscore6'}
+  ];
+  items.forEach(item => {
+    const ansEl = document.getElementById(item.answerId);
+    const scoreEl = document.getElementById(item.scoreId);
+    const row = scoreEl ? scoreEl.closest('.gr-row') : null;
+    if (!ansEl || !scoreEl || !row) return;
+    if (!ansEl.value.trim()) {
+      scoreEl.value = 0; scoreEl.classList.add('locked'); scoreEl.readOnly = true;
+      if (!row.querySelector('.blank-badge')) {
+        const badge = document.createElement('span');
+        badge.className = 'blank-badge'; badge.textContent = '✗ Sin respuesta — 0 pts';
+        row.appendChild(badge);
+      }
+    } else {
+      scoreEl.classList.remove('locked'); scoreEl.readOnly = false;
+      const b = row.querySelector('.blank-badge'); if (b) b.remove();
+    }
+  });
+}
+
+/* ============ GRADE CALCULATOR (Chilean scale) ============ */
+function calcGrade(score, maxScore) {
+  const pct = (score / maxScore) * 100;
+  const grade = pct < 60 ? (1 + (pct / 60) * 3) : (4 + ((pct - 60) / 40) * 3);
+  return Math.min(7, Math.max(1, Math.round(grade * 10) / 10));
+}
+
+/* ============ SECTION MESSAGE BUILDER ============ */
+function buildSectionMsg(containerId, correct, total, tips) {
+  const pct = correct / total;
+  let level, title, intro;
+  if (pct >= 0.83) { level = 'great'; title = '🌟 ¡Excelente!'; intro = ' Tu desempeño en esta sección fue sobresaliente.'; }
+  else if (pct >= 0.58) { level = 'good'; title = '👍 Buen trabajo'; intro = ' Estás en el camino correcto. Revisa los siguientes puntos:'; }
+  else { level = 'needswork'; title = '📚 Necesitas practicar más'; intro = ' Presta atención a las siguientes áreas:'; }
+  const tipsHtml = tips.length ? `<ul class="msg-tips">${tips.map(t => `<li>${t}</li>`).join('')}</ul>` : '';
+  document.getElementById(containerId).innerHTML = `<div class="section-feedback-msg ${level}"><strong>${title}</strong>${intro}${tipsHtml}</div>`;
+}
+
+function buildSummaryDots(containerId, items) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = items.map((item, i) => `<div class="dot ${item.correct ? 'correct' : 'incorrect'}" title="Pregunta ${i + 1}: ${item.correct ? 'Correcta' : 'Incorrecta'}"></div>`).join('');
+}
+
+/* ============ FEEDBACK BUILD (auto-graded parts) ============ */
+function buildFeedback(laScore, lbScore, raScore) {
+  // Listening A
+  let laItems = [], laDots = [];
+  const laQuestions = {1:'Sabor Market is located…',2:'The rooftop terrace was designed by…',3:'The market is closed on…',4:'Live music plays…',5:'On Fridays, stall workers wear…',6:'Visitors who forget their bag can…'};
+  for (let i=1;i<=6;i++) {
+    const ans = g('la'+i); const correct = ans === LA_KEY[i];
+    laDots.push({correct});
+    laItems.push(`<div class="feedback-item ${correct?'fb-correct':'fb-incorrect'}"><div class="q-label"><span class="tag ${correct?'correct-tag':'incorrect-tag'}">${correct?'✓':'✗'}</span> ${i}. ${laQuestions[i]}</div><div class="student-ans">Tu respuesta: ${ans || '(en blanco)'} — ${ans?LA_TEXT[ans]:''}</div>${!correct?`<div class="correct-ans">Respuesta correcta: ${LA_KEY[i]} — ${LA_TEXT[LA_KEY[i]]}</div>`:''}</div>`);
+  }
+  document.getElementById('fbLA').innerHTML = laItems.join('');
+  buildSummaryDots('dotsLA', laDots);
+
+  // Listening B
+  let lbItems = [], lbDots = [];
+  const lbEvents = {A:'They help with the awards ceremony.',B:'They set up the water stations early in the morning.',C:'Volunteers are given lunch.',D:'Registration for volunteers closes.',E:'The race begins.',F:'They hand out water bottles at station three.'};
+  ['A','B','C','D','E','F'].forEach(l => {
+    const ans = g('lb_'+l); const correct = ans === String(LB_KEY[l]);
+    lbDots.push({correct});
+    lbItems.push(`<div class="feedback-item ${correct?'fb-correct':'fb-incorrect'}"><div class="q-label"><span class="tag ${correct?'correct-tag':'incorrect-tag'}">${correct?'✓':'✗'}</span> ${lbEvents[l]}</div><div class="student-ans">Tu orden: ${ans || '(en blanco)'}</div>${!correct?`<div class="correct-ans">Orden correcto: ${LB_KEY[l]}</div>`:''}</div>`);
+  });
+  document.getElementById('fbLB').innerHTML = lbItems.join('');
+  buildSummaryDots('dotsLB', lbDots);
+
+  buildSectionMsg('msgListening', laScore+lbScore, 12, laScore+lbScore < 7 ? [
+    'Revisa cómo identificar información específica (lugares, horarios, nombres) en un audio descriptivo.',
+    'Presta atención al orden cronológico usando el presente continuo para planes futuros ("we\'re arriving", "we\'re handing out").'
+  ] : ['Sigue practicando la identificación de detalles específicos en audios descriptivos.']);
+
+  // Reading A
+  let raItems = [], raDots = [];
+  const raQuestions = {1:'Public transport is unusually quiet…',2:'People usually book restaurant tables far in advance…',3:'Sunday shopping requires planning ahead…',4:'Nightlife in the city starts much later… (extra)',5:'The calm on public transport gives extra time…',6:'Sundays are generally spent quietly…',7:'Spontaneous plans are harder to make now…'};
+  for (let i=1;i<=7;i++) {
+    const ans = g('ra'+i);
+    if (!RA_KEY[i]) {
+      raItems.push(`<div class="feedback-item"><div class="q-label"><span class="tag info-tag">i</span> ${i}. ${raQuestions[i]}</div><div class="student-ans">Esta idea es la opción extra — no corresponde a ningún participante.</div></div>`);
+      continue;
+    }
+    const correct = ans === RA_KEY[i];
+    raDots.push({correct});
+    raItems.push(`<div class="feedback-item ${correct?'fb-correct':'fb-incorrect'}"><div class="q-label"><span class="tag ${correct?'correct-tag':'incorrect-tag'}">${correct?'✓':'✗'}</span> ${i}. ${raQuestions[i]}</div><div class="student-ans">Tu respuesta: ${ans ? RA_TEXT[ans] : '(en blanco)'}</div>${!correct?`<div class="correct-ans">Respuesta correcta: ${RA_TEXT[RA_KEY[i]]}</div>`:''}</div>`);
+  }
+  document.getElementById('fbRA').innerHTML = raItems.join('');
+  buildSummaryDots('dotsRA', raDots);
+
+  buildSectionMsg('msgReading', raScore, 6, raScore < 4 ? [
+    'Vuelve a leer cada testimonio identificando quién menciona cada hábito cultural específico.',
+    'Recuerda que una de las ideas del listado no corresponde a ninguna de las tres personas.'
+  ] : ['Buen manejo de la comprensión de lectura para identificar ideas específicas por hablante.']);
+}
+
+function buildGeminiFeedback() {
+  let rbHtml = '';
+  for (let i=1;i<=6;i++) {
+    const score = parseFloat(g('rb_gscore'+i)) || 0;
+    rbHtml += `<div class="feedback-item"><div class="q-label"><span class="tag ${score>=1?'correct-tag':score>0?'info-tag':'incorrect-tag'}">${score} / 1</span> Pregunta ${i}</div><div class="student-ans">Tu respuesta: ${g('rb_q'+i) || '(en blanco)'}</div></div>`;
+  }
+  document.getElementById('fbRB').innerHTML = rbHtml;
+
+  const w1 = parseFloat(getRadio('rub1'))||0, w2 = parseFloat(getRadio('rub2'))||0, w3 = parseFloat(getRadio('rub3'))||0, w4 = parseFloat(getRadio('rub4'))||0;
+  document.getElementById('fbWriting').innerHTML = `<div class="feedback-item">
+    <div class="q-label">Coherencia y extensión: ${w1} / 4 pts</div>
+    <div class="q-label">Vocabulario: ${w2} / 3 pts</div>
+    <div class="q-label">Gramática: ${w3} / 3 pts</div>
+    <div class="q-label">Ortografía: ${w4} / 2 pts</div>
+  </div>`;
+}
+
+/* ============ FILTER FEEDBACK (6 tabs) ============ */
+function filterFeedback(type, evt) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  if (evt && evt.target) evt.target.classList.add('active');
+  const parts = document.querySelectorAll('.feedback-part');
+  const items = document.querySelectorAll('.feedback-item');
+  if (type === 'correct' || type === 'incorrect') {
+    parts.forEach(p => p.style.display = 'block');
+    items.forEach(item => {
+      const isCorrect = item.classList.contains('fb-correct');
+      const isIncorrect = item.classList.contains('fb-incorrect');
+      if (!isCorrect && !isIncorrect) { item.style.display = ''; return; }
+      item.style.display = (type === 'correct' ? isCorrect : isIncorrect) ? '' : 'none';
+    });
+    parts.forEach(p => {
+      const visible = [...p.querySelectorAll('.feedback-item')].some(i => i.style.display !== 'none');
+      p.style.display = visible ? 'block' : 'none';
+    });
+  } else {
+    items.forEach(i => i.style.display = '');
+    parts.forEach(p => { p.style.display = (type === 'all' || p.dataset.section === type) ? 'block' : 'none'; });
+  }
+}
+
+/* ============ PARTIAL FEEDBACK TOGGLE ============ */
+let partialShown = false;
+function togglePartialFeedback() {
+  partialShown = !partialShown;
+  document.getElementById('feedbackSection').style.display = partialShown ? 'block' : 'none';
+  document.getElementById('partialNote').style.display = partialShown ? 'block' : 'none';
+  document.querySelectorAll('.feedback-part[data-section="reading"]').forEach((p,idx) => { if (idx===1) p.style.display='none'; }); // hide Reading B part
+  document.querySelector('.feedback-part[data-section="writing"]').style.display = 'none';
+  document.getElementById('partialBtn').textContent = partialShown ? '🙈 Ocultar retroalimentación parcial' : '👁 Ver retroalimentación parcial';
+}
+
+/* ============ MAIN GRADE CALCULATION ============ */
+function calculateFinalGrade() {
+  let laScore = 0; for (let i=1;i<=6;i++) if (g('la'+i) === LA_KEY[i]) laScore++;
+  let lbScore = 0; ['A','B','C','D','E','F'].forEach(l => { if (g('lb_'+l) === String(LB_KEY[l])) lbScore++; });
+  let raScore = 0; Object.keys(RA_KEY).forEach(i => { if (g('ra'+i) === RA_KEY[i]) raScore++; });
+
+  const autoListeningScore = laScore + lbScore;
+
+  const geminiRBFilled = [1,2,3,4,5,6].every(i => g('rb_gscore'+i) !== '');
+  const rubricFilled = ['rub1','rub2','rub3','rub4'].every(n => getRadio(n) !== '');
+
+  if (!geminiRBFilled) applyBlankZeros();
+
+  buildFeedback(laScore, lbScore, raScore);
+
+  const studentName = g('studentName').trim();
+  document.getElementById('resultsTitle').textContent = studentName ? `📊 Resultados de: ${studentName}` : '📊 Resultados del Mock Test';
+
+  document.getElementById('listeningDisplay').textContent = `${autoListeningScore} / 12 pts`;
+  document.getElementById('readingDisplay').textContent = raScore + ' / 6 pts + Reading B pendiente';
+
+  document.getElementById('results').style.display = 'block';
+
+  if (geminiRBFilled && rubricFilled) {
+    autoGeminiDone = true;
+    let rbScore = 0; for (let i=1;i<=6;i++) rbScore += parseFloat(g('rb_gscore'+i)) || 0;
+    const writingScore = [1,2,3,4].reduce((s,n) => s + (parseFloat(getRadio('rub'+n))||0), 0);
+    const readingTotal = raScore + rbScore;
+    const totalScore = autoListeningScore + readingTotal + writingScore;
+    const grade = calcGrade(totalScore, 36);
+
+    document.getElementById('readingDisplay').textContent = `${readingTotal.toFixed(1).replace(/\.0$/,'')} / 12 pts`;
+    document.getElementById('writingDisplay').textContent = `${writingScore.toFixed(1).replace(/\.0$/,'')} / 12 pts`;
+    document.getElementById('totalDisplay').textContent = `${totalScore.toFixed(1).replace(/\.0$/,'')} / 36 pts`;
+    document.getElementById('gradeDisplay').textContent = grade.toFixed(1);
+    document.getElementById('gradeMsg').textContent = grade >= 4.0 ? '¡Aprobado!' : 'Sigue practicando, ¡puedes mejorar!';
+
+    document.getElementById('partialBar').style.display = 'none';
+    document.getElementById('feedbackSection').style.display = 'block';
+    document.getElementById('filterTabs').style.display = 'flex';
+    document.getElementById('partialNote').style.display = 'none';
+    document.querySelectorAll('.feedback-part').forEach(p => p.style.display = 'block');
+    document.getElementById('confirmGeminiBtn').style.display = 'none';
+    buildGeminiFeedback();
+  } else {
+    autoGeminiDone = false;
+    document.getElementById('writingDisplay').textContent = '⏳ pendiente';
+    document.getElementById('totalDisplay').textContent = '⏳ pendiente';
+    document.getElementById('gradeDisplay').innerHTML = '<span class="pending-badge">⏳ Nota pendiente</span>';
+    document.getElementById('gradeMsg').textContent = 'Completa la revisión con Gemini en Reading B y Writing para ver tu nota final.';
+    document.getElementById('partialBar').style.display = 'block';
+    document.getElementById('feedbackSection').style.display = 'none';
+    document.getElementById('filterTabs').style.display = 'none';
+    document.getElementById('confirmGeminiBtn').style.display = 'block';
+  }
+}
+
+function updateWithGeminiScores() {
+  const geminiRBFilled = [1,2,3,4,5,6].every(i => g('rb_gscore'+i) !== '');
+  const rubricFilled = ['rub1','rub2','rub3','rub4'].every(n => getRadio(n) !== '');
+  if (!geminiRBFilled || !rubricFilled) {
+    alert('Completa todos los puntajes de Reading B y todos los criterios de la rúbrica de Writing antes de continuar.');
+    return;
+  }
+  calculateFinalGrade();
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ============ INIT ============ */
+window.addEventListener('load', () => {
+  loadSaved();
+  updateWordCount();
+  updateRubric();
+  updateProgress();
+});
+</script>
+</body>
+</html>
