@@ -505,19 +505,20 @@ audio { width: 100%; border-radius: 8px; margin-bottom: 8px; }
       </div>
       <div class="section-body">
         <div class="part-instructions">
-          Last weekend you went to a friend's surprise birthday party. Another friend who couldn't attend is
-          curious about it. Write an email telling them what happened (80 words minimum). Use these
+          Last weekend you visited your grandparents, who live in the countryside. A friend is curious
+          about your trip. Write an email telling them what happened (80 words minimum). Use these
           questions to guide your writing:
           <ul style="margin-top:8px; padding-left:18px;">
-            <li>Where was the party? Who organized it?</li>
-            <li>How did you find out it was a surprise?</li>
-            <li>What did people do at the party? What was the atmosphere like?</li>
-            <li>Would you recommend this kind of celebration? Why?</li>
+            <li>Where did you travel and how did you get there?</li>
+            <li>Did you go alone?</li>
+            <li>What did you do on the trip?</li>
+            <li>Describe the weather during your trip.</li>
+            <li>Was it a good trip? Why or why not?</li>
           </ul>
           <button class="es-toggle" onclick="toggleEs('es-wr')">🌐 Ver en español</button>
-          <div class="es-block" id="es-wr">El fin de semana pasado fuiste a una fiesta sorpresa de
-          cumpleaños de un amigo. Otro amigo que no pudo asistir tiene curiosidad. Escribe un correo
-          contándole qué pasó (mínimo 80 palabras), usando las preguntas guía de arriba.</div>
+          <div class="es-block" id="es-wr">El fin de semana pasado visitaste a tus abuelos, que viven en el
+          campo. Un amigo tiene curiosidad sobre tu viaje. Escribe un correo contándole qué pasó (mínimo 80
+          palabras), usando las preguntas guía de arriba.</div>
         </div>
 
         <textarea class="writing-textarea" id="writingText" oninput="updateWordCount();saveAll()" placeholder="Write your email here…"></textarea>
@@ -872,7 +873,7 @@ Total sugerido: ___ / 6 pts`;
 
     geminiText = `Eres un asistente pedagógico evaluando un texto de Writing de un estudiante de inglés nivel B1 (Intermedio) según una rúbrica de 4 criterios. NO menciones la institución ni el nombre del curso.
 
-TAREA DEL ESTUDIANTE: Escribir un email informal (mínimo 80 palabras) a un amigo contando sobre una fiesta sorpresa de cumpleaños a la que asistió, respondiendo: dónde fue, quién la organizó, cómo se enteró de la sorpresa, qué hicieron en la fiesta, cómo era el ambiente, y si recomendaría este tipo de celebración.
+TAREA DEL ESTUDIANTE: Escribir un email informal (mínimo 80 palabras) a un amigo contando sobre un viaje de fin de semana a visitar a sus abuelos en el campo, respondiendo: adónde viajó y cómo llegó, si fue solo/a o acompañado/a, qué hizo durante el viaje, cómo estuvo el clima, y si fue un buen viaje y por qué.
 
 RÚBRICA COMPLETA:
 1. Coherencia y extensión (4 pts): Totalmente Logrado (4) = 80+ palabras, todas las ideas, coherente. Logrado (3.2) = 60-79 palabras. Parcialmente Logrado (2.4) = 40-59 palabras, cobertura parcial. Insuficientemente Logrado (1.2) = 20-39 palabras. No Logrado (0) = menos de 20 palabras o no responde.
